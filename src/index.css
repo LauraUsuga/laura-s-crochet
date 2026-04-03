@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-surface: 20 100% 99%;
+  --color-ink: 0 0% 33%;
+  --color-muted: 0 0% 54%;
+  --color-cream: 20 100% 99%;
+  --color-rose: 350 32% 81%;
+  --color-blush: 348 47% 93%;
+  --color-line: 345 20% 84%;
+}
+
+.dark {
+  --color-surface: 0 0% 14%;
+  --color-ink: 0 0% 92%;
+  --color-muted: 0 0% 72%;
+  --color-cream: 0 0% 18%;
+  --color-rose: 350 28% 70%;
+  --color-blush: 348 18% 24%;
+  --color-line: 0 0% 34%;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply m-0 bg-surface font-body text-ink antialiased;
+    background-image: radial-gradient(circle at 12% 18%, hsl(var(--color-blush) / 0.52) 0%, transparent 44%),
+      radial-gradient(circle at 85% 8%, hsl(var(--color-rose) / 0.12) 0%, transparent 36%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .woven-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid hsl(var(--color-line));
+    background: linear-gradient(145deg, hsl(var(--color-blush) / 0.52), hsl(var(--color-surface) / 0.95));
+    box-shadow: 0 24px 40px -32px hsl(var(--color-ink) / 0.5);
+  }
+
+  .woven-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: linear-gradient(120deg, transparent 0, transparent 48%, hsl(var(--color-rose) / 0.35) 49%, transparent 51%, transparent 100%);
+    background-size: 18px 18px;
+    pointer-events: none;
+  }
+}
